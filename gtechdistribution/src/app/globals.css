@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #F7F8FA;
+  color: #12161C;
+}
+
+.trace-line {
+  stroke: #C9862E;
+  stroke-width: 1.5;
+  fill: none;
+  opacity: 0.55;
+}
+.trace-dot {
+  fill: #C9862E;
+}
+
+.hover-lift {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(18, 22, 28, 0.08);
+  border-color: #C9862E !important;
+}
+
+.cta-btn {
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.cta-btn:hover {
+  transform: translateY(-1px);
+}
+
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 1px;
+  background: #C9862E;
+  transition: width 0.2s ease;
+}
+.nav-link:hover::after {
+  width: 100%;
+}

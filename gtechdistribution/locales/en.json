@@ -1,0 +1,158 @@
+{
+  "meta": {
+    "title": "GTechDistribution — SSD & Memory Distribution",
+    "description": "GTechDistribution supplies tested, verified SSDs and memory to businesses, IT professionals, and system integrators — with the specs documented and the supply chain accountable."
+  },
+  "nav": {
+    "why": "Why Us",
+    "products": "Products",
+    "quality": "Quality",
+    "industries": "Industries",
+    "faq": "FAQ",
+    "contact": "Contact"
+  },
+  "cta": {
+    "quote": "Request a Quote",
+    "viewProducts": "View Products"
+  },
+  "hero": {
+    "eyebrow": "SSD & MEMORY DISTRIBUTION",
+    "title": "Storage hardware, specified and sourced right.",
+    "sub": "GTechDistribution supplies tested, verified SSDs to businesses, IT professionals, and system integrators — with the specs documented and the supply chain accountable.",
+    "stat1": "SATA / NVMe / M.2",
+    "stat1Label": "Interfaces stocked",
+    "stat2": "32GB–4TB",
+    "stat2Label": "Capacity range",
+    "stat3": "100%",
+    "stat3Label": "Units tested pre-ship"
+  },
+  "why": {
+    "title": "Why work with us",
+    "sub": "Four things a hardware buyer actually checks before ordering.",
+    "items": [
+      { "n": "Components", "t": "Verified components", "d": "128-layer TLC NAND with an industrial-focused controller — checked against its datasheet before it ships." },
+      { "n": "Pricing", "t": "Competitive pricing", "d": "Distribution-level pricing for bulk and repeat orders, quoted transparently — no hidden markup." },
+      { "n": "Supply", "t": "Reliable supply chain", "d": "Consistent stock and lead times, communicated clearly so you can plan procurement." },
+      { "n": "Support", "t": "Technical support", "d": "Direct access to people who can answer interface, capacity, and compatibility questions." }
+    ]
+  },
+  "products": {
+    "title": "Product line",
+    "sub": "Starting with SSDs across four form factors. Built to expand into RAM, GPUs, CPUs, motherboards, and networking hardware.",
+    "items": [
+      { "id": "sata25", "name": "GTD 2.5\" SATA III", "capacity": "32GB – 4TB", "iface": "SATA III · 6Gb/s", "perf": "550 MB/s read / 520 MB/s write", "tag": "General purpose", "controller": "SMI 2259XT", "flash": "3D TLC NAND", "temp": "0°C – 70°C", "size": "100 × 70 × 7 mm" },
+      { "id": "m2sata", "name": "GTD M.2 SATA III", "capacity": "32GB – 4TB", "iface": "M.2 2280/2242 · SATA III", "perf": "550 MB/s read / 520 MB/s write", "tag": "Slim form factor", "controller": "SMI 2259XT", "flash": "3D TLC NAND", "temp": "0°C – 70°C", "size": "80 × 22 × 2.3 mm" },
+      { "id": "msata", "name": "GTD mSATA SSD", "capacity": "32GB – 4TB", "iface": "mSATA · SATA III", "perf": "550 MB/s read / 520 MB/s write", "tag": "Embedded / legacy systems", "controller": "SMI controller", "flash": "3D TLC NAND", "temp": "0°C – 70°C", "size": "50 × 30 × 3.5 mm" },
+      { "id": "nvme", "name": "GTD M.2 NVMe PCIe", "capacity": "128GB – 4TB", "iface": "M.2 2280 · PCIe Gen4 x4", "perf": "up to 7400 MB/s read / 6500 MB/s write", "tag": "High performance", "controller": "NVMe SSD controller", "flash": "3D TLC NAND", "temp": "0°C – 70°C", "size": "80 × 22 × 2.3 mm" }
+    ],
+    "spec": "Spec sheet",
+    "quote": "Request quote",
+    "ramNote": "Also sourcing: DDR3 / DDR4 / DDR5 U-DIMM and SO-DIMM memory — 2GB–32GB, 1333–6000MHz."
+  },
+  "quality": {
+    "title": "Quality and verification",
+    "sub": "Every unit is functionally tested before it ships, and a benchmark report is kept on file per batch.",
+    "items": [
+      { "t": "Certifications", "d": "Manufacturer certified to ISO 9001 (quality management), CE, and FCC standards." },
+      { "t": "Testing procedures", "d": "Incoming inspection and functional testing on every batch using CrystalDiskMark, AS SSD Benchmark, CrystalDiskInfo, HD Tune Pro, ATTO, and burn-in testing." },
+      { "t": "Performance & endurance", "d": "Near interface-max sequential speeds, ~800TB endurance (TBW), and a 1.5M-hour MTBF rating." },
+      { "t": "Quality control", "d": "S.M.A.R.T. health monitoring and TRIM enabled on every unit, with traceable batch records from supplier to shipment." }
+    ],
+    "sample": {
+      "label": "SAMPLE VERIFICATION LOG",
+      "device": "2.5\" SATA III · 256GB",
+      "read": "535.5 MB/s seq. read",
+      "write": "488.7 MB/s seq. write",
+      "health": "100% health at shipment"
+    },
+    "certified": "Certified",
+    "certifications": ["ISO 9001", "CE", "FCC"]
+  },
+  "industries": {
+    "title": "Who we supply",
+    "items": [
+      { "t": "Businesses", "d": "Fleet upgrades and standardized hardware procurement." },
+      { "t": "IT professionals", "d": "Reliable stock for client deployments and repairs." },
+      { "t": "System integrators", "d": "Bulk components for pre-built systems." },
+      { "t": "Retail customers", "d": "Verified components at distributor pricing." },
+      { "t": "Enterprise users", "d": "Volume orders with consistent lead times." }
+    ]
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "sub": "Common questions from IT buyers and system integrators.",
+    "items": [
+      { "q": "What products do you supply?", "a": "We supply 2.5\" SATA III, M.2 SATA III, mSATA, and M.2 NVMe PCIe SSDs, with DDR3/DDR4/DDR5 memory modules also available. Our line is built to expand into additional hardware categories over time." },
+      { "q": "Do you provide bulk orders?", "a": "Yes. Bulk and repeat orders receive distribution-level pricing, quoted transparently based on volume and lead time." },
+      { "q": "What quality standards do products meet?", "a": "Our products are manufactured to ISO 9001 quality management standards and are CE and FCC certified. Every unit is functionally tested before shipment, with a batch verification log kept on file." },
+      { "q": "Do you offer technical support?", "a": "Yes — direct access to people who can answer interface, capacity, and compatibility questions, before and after your order." },
+      { "q": "How can customers request a quotation?", "a": "Use the contact form with your required capacity, interface, and volume, and we'll respond with pricing and lead time." }
+    ]
+  },
+  "contactPage": {
+    "title": "Request a quote",
+    "sub": "Tell us what you need — capacity, interface, and volume — and we'll get back to you with pricing and lead time.",
+    "form": {
+      "name": "Name",
+      "company": "Company",
+      "email": "Email",
+      "productInterest": "Product interest",
+      "productInterestPlaceholder": "Select a product",
+      "message": "Message",
+      "messagePlaceholder": "Tell us about your requirements — capacity, quantity, timeline...",
+      "submit": "Send request",
+      "submitting": "Sending...",
+      "success": "Thanks — your request has been received. We'll respond with pricing and lead time shortly."
+    },
+    "details": {
+      "title": "Other ways to reach us",
+      "email": "sales@gtechdistribution.com",
+      "phone": "+995 000 00 00 00",
+      "social": "LinkedIn · WeChat · WhatsApp"
+    }
+  },
+  "contact": {
+    "title": "Request a quote",
+    "sub": "Tell us what you need — capacity, interface, and volume — and we'll get back to you with pricing and lead time.",
+    "button": "Send request"
+  },
+  "productsPage": {
+    "title": "Product catalog",
+    "sub": "Full specifications for our current SSD line and memory modules. Datasheet downloads coming soon.",
+    "tableHeaders": {
+      "model": "Product model",
+      "interface": "Interface",
+      "controller": "Controller",
+      "flash": "Flash",
+      "capacity": "Capacity",
+      "read": "Read speed",
+      "write": "Write speed",
+      "temp": "Operating temp.",
+      "size": "Size"
+    },
+    "ramTitle": "Memory — DDR3 / DDR4 / DDR5",
+    "ramSub": "U-DIMM and SO-DIMM, original strategic-grade DRAM chips.",
+    "ram": {
+      "tableHeaders": {
+        "model": "Product model",
+        "capacity": "Capacity",
+        "frequency": "Memory frequency",
+        "voltage": "Voltage",
+        "temp": "Operating temp.",
+        "size": "Size"
+      },
+      "items": [
+        { "model": "DDR5 U-DIMM", "capacity": "8GB–32GB", "frequency": "4800/5200/5600/6000MHz", "voltage": "1.1V", "temp": "0°C – 85°C", "size": "133.35 × 31.25 × 3.9 mm" },
+        { "model": "DDR5 SO-DIMM", "capacity": "8GB–32GB", "frequency": "4800/5200/5600/6000MHz", "voltage": "1.1V", "temp": "0°C – 85°C", "size": "69.60 × 30 × 3.7 mm" },
+        { "model": "DDR4 U-DIMM", "capacity": "8GB–32GB", "frequency": "2133/2400/2666/3200/3600MHz", "voltage": "1.2V", "temp": "0°C – 85°C", "size": "133.35 × 31.25 × 3.9 mm" },
+        { "model": "DDR4 SO-DIMM", "capacity": "8GB–32GB", "frequency": "2133/2400/2666/3200/3600MHz", "voltage": "1.2V", "temp": "0°C – 85°C", "size": "69.60 × 30 × 3.7 mm" },
+        { "model": "DDR3 U-DIMM", "capacity": "2GB–8GB", "frequency": "1333/1600/1866MHz", "voltage": "1.5V", "temp": "0°C – 85°C", "size": "133.35 × 19 × 3.9 mm" },
+        { "model": "DDR3 SO-DIMM", "capacity": "2GB–8GB", "frequency": "1333/1600/1866MHz", "voltage": "1.35V", "temp": "0°C – 85°C", "size": "69.60 × 30 × 3.7 mm" }
+      ]
+    }
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "tagline": "Hardware, documented."
+  }
+}
