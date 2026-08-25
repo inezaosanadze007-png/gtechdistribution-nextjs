@@ -28,7 +28,6 @@ export default async function ContactPage({ params }: { params: { lang: Locale }
             <div className="font-mono text-[13px] text-inkSoft space-y-2">
               <div>{dict.contactPage.details.email}</div>
               <div>{dict.contactPage.details.phone}</div>
-              <div>{dict.contactPage.details.social}</div>
             </div>
           </div>
         </Reveal>
