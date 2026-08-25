@@ -82,7 +82,7 @@
     "title": "Frequently asked questions",
     "sub": "Common questions from IT buyers and system integrators.",
     "items": [
-      { "q": "What products do you supply?", "a": "We supply 2.5\" SATA III, M.2 SATA III, mSATA, and M.2 NVMe PCIe SSDs, with DDR3/DDR4/DDR5 memory modules also available. Our line is built to expand into additional hardware categories over time." },
+      { "q": "What products do you supply?", "a": "We supply 2.5\" SATA III, M.2 SATA III, mSATA, and M.2 NVMe PCIe SSDs, with DDR3/DDR4/DDR5 memory modules also available." },
       { "q": "Do you provide bulk orders?", "a": "Yes. Bulk and repeat orders receive distribution-level pricing, quoted transparently based on volume and lead time." },
       { "q": "What quality standards do products meet?", "a": "Our products are manufactured to ISO 9001 quality management standards and are CE and FCC certified. Every unit is functionally tested before shipment, with a batch verification log kept on file." },
       { "q": "Do you offer technical support?", "a": "Yes — direct access to people who can answer interface, capacity, and compatibility questions, before and after your order." },
