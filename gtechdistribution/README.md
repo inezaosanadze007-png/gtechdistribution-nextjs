@@ -74,27 +74,40 @@ npm run start
 ## Design system
 
 Colors, fonts, and spacing conventions are defined in `tailwind.config.ts` and
-`src/app/globals.css`. The visual language ("lit board"): the page opens dark
-on the circuit photograph in `public/images/hero-circuit.jpg` and resolves into
-a cool near-white below it. Space Grotesk for headlines, IBM Plex Mono for
-specs and data.
+`src/app/globals.css`. The visual language ("lit board") is sampled from the
+hero photograph in `public/images/hero-chip.jpg`: navy board, electric blue
+trace, and the warm amber glow off the lit die. Space Grotesk for headlines,
+IBM Plex Mono for specs and data.
+
+The page alternates dark and light bands rather than committing to either:
+
+| band | ground |
+|---|---|
+| Hero | dark, over the photograph |
+| Why us | white |
+| Products | page ground |
+| Quality | dark |
+| Industries | page ground |
+| Closing CTA + footer | dark |
 
 The palette has **two contexts**, and mixing them breaks legibility:
 
-- **Light** (`bg`, `surface`, `band`, `ink`, `inkSoft`, `line`, `accent`) —
-  everything below the hero. `accent` is a deep trace teal.
-- **Dark** (`heroBg`, `heroInk`, `heroInkSoft`, `heroLine`, `trace`, `violet`)
-  — the hero only. `trace` is the image's bright cyan; it reaches only 1.5:1 on
-  white, so it must never be used on a light ground. `violet` echoes the
-  image's corner bleed and appears only in the hero scrim.
+- **Light** (`bg`, `surface`, `band`, `ink`, `inkSoft`, `line`, `field`,
+  `accent`, `alert`). `accent` is the electric blue at a depth that survives
+  on white.
+- **Dark** (`deep`, `deepAlt`, `deepInk`, `deepInkSoft`, `deepLine`, `trace`,
+  `ember`). `trace` is the image's brighter blue and `ember` its amber; both
+  are legible only on a dark ground and must never be used on light.
 
 Two rules keep the palette legible:
 
-- **`accent` means "act on this."** Accent fills are reserved for buttons and
-  the active language toggle. Non-interactive emphasis uses `band` with an
-  `accent` hairline, never a filled block.
-- **`alert` is the only warm value** and is reserved for failure states, so a
-  problem never reads as the same signal as a call to action.
+- **The signal color means "act on this."** `accent` on light and `trace` on
+  dark are reserved for buttons and the active language toggle.
+  Non-interactive emphasis uses a band with a hairline, never a filled block.
+- **Warmth is rationed.** `ember` marks small accents on dark grounds only,
+  and `alert` is reserved for failure states, so a problem never reads as the
+  same signal as a call to action.
 
-Every text pair clears WCAG AA against its own ground (worst 5.49:1), and
+Every text pair clears WCAG AA against its own ground (worst 5.57:1), and
 `field` exists so form borders meet the 3:1 required of UI boundaries.
+`deepLine` is a decorative divider and is deliberately below that threshold.

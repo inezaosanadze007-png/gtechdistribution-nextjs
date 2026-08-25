@@ -1,8 +1,8 @@
 <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-  <rect width="120" height="120" fill="#060D1E"/>
+  <rect width="120" height="120" fill="#0A1428"/>
   <g transform="translate(30,30)">
-    <rect x="10" y="10" width="60" height="60" rx="4" fill="none" stroke="#E8F1FF" stroke-width="3"/>
-    <g stroke="#E8F1FF" stroke-width="3">
+    <rect x="10" y="10" width="60" height="60" rx="4" fill="none" stroke="#E9F0FC" stroke-width="3"/>
+    <g stroke="#E9F0FC" stroke-width="3">
       <line x1="20" y1="10" x2="20" y2="0"/>
       <line x1="40" y1="10" x2="40" y2="0"/>
       <line x1="60" y1="10" x2="60" y2="0"/>
@@ -10,7 +10,7 @@
       <line x1="40" y1="70" x2="40" y2="80"/>
       <line x1="60" y1="70" x2="60" y2="80"/>
     </g>
-    <path d="M 55 25 A 15 15 0 1 0 55 55 L 55 42 L 45 42" fill="none" stroke="#E8F1FF" stroke-width="6" stroke-linecap="square"/>
-    <circle cx="45" cy="42" r="3.5" fill="#29E0F5"/>
+    <path d="M 55 25 A 15 15 0 1 0 55 55 L 55 42 L 45 42" fill="none" stroke="#E9F0FC" stroke-width="6" stroke-linecap="square"/>
+    <circle cx="45" cy="42" r="3.5" fill="#4C9BFF"/>
   </g>
 </svg>

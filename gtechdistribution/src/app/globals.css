@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --bg: #f5f8fc;
+  --bg: #f4f7fc;
   --surface: #ffffff;
-  --ink: #0b1626;
-  --ink-soft: #4a5f7a;
-  --line: #d5dfeb;
-  --accent: #08697f;
+  --ink: #0a1526;
+  --ink-soft: #46587a;
+  --line: #d2ddee;
+  --accent: #1d4ed8;
 }
 
 * {
@@ -26,20 +26,18 @@ body {
 }
 
 /* The hero scrim: dense on the left so the headline sits legibly on the
-   photograph, thinning across the right so the board and its glow stay
-   visible, and closing to the page ground at the bottom so the dark hero
-   hands off to the light page below. The violet is the image's own corner. */
+   board, thinning across the middle where the lit chip is, and closing to
+   the navy at the bottom so the section ends on a clean edge. */
 .hero-scrim {
   background:
-    radial-gradient(120% 90% at 8% 0%, rgba(139, 92, 246, 0.22) 0%, rgba(139, 92, 246, 0) 55%),
     linear-gradient(
       100deg,
-      rgba(6, 13, 30, 0.97) 0%,
-      rgba(6, 13, 30, 0.9) 34%,
-      rgba(6, 13, 30, 0.55) 58%,
-      rgba(6, 13, 30, 0.78) 100%
+      rgba(10, 20, 40, 0.96) 0%,
+      rgba(10, 20, 40, 0.88) 36%,
+      rgba(10, 20, 40, 0.5) 62%,
+      rgba(10, 20, 40, 0.72) 100%
     ),
-    linear-gradient(to bottom, rgba(6, 13, 30, 0) 62%, rgba(6, 13, 30, 0.96) 100%);
+    linear-gradient(to bottom, rgba(10, 20, 40, 0) 64%, rgba(10, 20, 40, 0.98) 100%);
 }
 
 .hover-lift {
@@ -47,7 +45,7 @@ body {
 }
 .hover-lift:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(11, 22, 38, 0.1);
+  box-shadow: 0 12px 28px rgba(10, 21, 38, 0.1);
   border-color: var(--accent) !important;
 }
 
@@ -56,7 +54,7 @@ body {
 }
 .cta-btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(11, 22, 38, 0.16);
+  box-shadow: 0 6px 18px rgba(10, 21, 38, 0.18);
 }
 
 .nav-link {
