@@ -1,12 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { locales, defaultLocale } from "@/lib/dictionaries";
 
-function getLocale(request: NextRequest): string {
-  const acceptLanguage = request.headers.get("accept-language") ?? "";
-  const preferred = acceptLanguage.split(",")[0]?.split("-")[0];
-  return (locales as readonly string[]).includes(preferred) ? preferred : defaultLocale;
-}
-
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
@@ -15,9 +9,11 @@ export function middleware(request: NextRequest) {
   );
   if (pathnameHasLocale) return;
 
-  const locale = getLocale(request);
+  // Georgian is the primary language: an unprefixed URL always opens in ka,
+  // regardless of the visitor's Accept-Language. English stays reachable via
+  // the language switcher or an explicit /en path.
   const url = request.nextUrl.clone();
-  url.pathname = `/${locale}${pathname === "/" ? "" : pathname}`;
+  url.pathname = `/${defaultLocale}${pathname === "/" ? "" : pathname}`;
   return NextResponse.redirect(url);
 }
 
