@@ -19,8 +19,9 @@ npm install
 npm run dev
 ```
 
-Visit `http://localhost:3000` — it redirects to `/en` (or `/ka` if your browser
-sends `Accept-Language: ka` first).
+Visit `http://localhost:3000` — it redirects to `/ka`. Georgian is the primary
+language; English is reachable via the language switcher or an explicit `/en`
+path.
 
 ```bash
 npm run build
@@ -33,8 +34,8 @@ npm run start
   copy is hardcoded into components.
 - Routes are locale-prefixed: `/en`, `/ka`, `/en/products`, `/ka/products`, etc.,
   via the `src/app/[lang]` dynamic segment.
-- `src/middleware.ts` redirects `/` and un-prefixed paths to the detected or
-  default locale.
+- `src/middleware.ts` redirects `/` and un-prefixed paths to the default
+  locale (`ka`), regardless of the visitor's `Accept-Language`.
 - `src/lib/dictionaries.ts` loads the right JSON file per request on the server
   — dictionaries never ship an unused-locale bundle to the client.
 - To add a language: drop a new `/locales/xx.json` (same shape as `en.json`),
@@ -51,9 +52,12 @@ npm run start
 
 ## Content notes / things to finish before launch
 
-- **Contact form is front-end only.** `src/components/ContactForm.tsx` simulates
-  a submission with a timeout — wire it to a real endpoint (an API route that
-  sends email, or a service like Formspree/Resend) before relying on it.
+- **Contact form needs its environment variables set.** Quote requests are
+  emailed via `src/app/api/contact/route.ts` (Resend REST API). Copy
+  `.env.example` and set `RESEND_API_KEY` and `CONTACT_FROM_EMAIL` in your
+  host's environment — until you do, the form shows an error rather than
+  accepting requests. The sender domain must be verified in Resend; the
+  recipient defaults to `Gtech.distribution@outlook.com`.
 - **Product photography is still needed.** Product cards currently show
   spec/text only, no images — see `src/components/ProductCard.tsx`. Drop
   finished product photos into `public/images/products/` and reference them

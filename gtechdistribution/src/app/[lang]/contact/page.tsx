@@ -17,7 +17,7 @@ export default async function ContactPage({ params }: { params: { lang: Locale }
 
       <div className="grid md:grid-cols-[1.4fr_1fr] gap-12">
         <Reveal delay={0.1}>
-          <ContactForm form={dict.contactPage.form} productOptions={productOptions} />
+          <ContactForm form={dict.contactPage.form} productOptions={productOptions} lang={params.lang} />
         </Reveal>
 
         <Reveal delay={0.15}>

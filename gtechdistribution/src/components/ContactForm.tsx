@@ -1,16 +1,18 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { Dictionary } from "@/lib/dictionaries";
+import { Dictionary, Locale } from "@/lib/dictionaries";
 
-type Status = "idle" | "submitting" | "success";
+type Status = "idle" | "submitting" | "success" | "error";
 
 export default function ContactForm({
   form,
   productOptions,
+  lang,
 }: {
   form: Dictionary["contactPage"]["form"];
   productOptions: { id: string; name: string }[];
+  lang: Locale;
 }) {
   const [status, setStatus] = useState<Status>("idle");
 
@@ -18,11 +20,30 @@ export default function ContactForm({
     e.preventDefault();
     setStatus("submitting");
 
-    // NOTE: this is a front-end-only placeholder. Wire this up to a real
-    // endpoint (e.g. an API route that sends email, or a service like
-    // Formspree / Resend) before going live.
-    await new Promise((resolve) => setTimeout(resolve, 600));
-    setStatus("success");
+    const data = new FormData(e.currentTarget);
+    const selectedId = String(data.get("productInterest") ?? "");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("name"),
+          email: data.get("email"),
+          company: data.get("company"),
+          // Send the product name — it is what the recipient actually reads.
+          productInterest:
+            productOptions.find((p) => p.id === selectedId)?.name ?? "",
+          message: data.get("message"),
+          locale: lang,
+        }),
+      });
+
+      if (!response.ok) throw new Error(`Request failed: ${response.status}`);
+      setStatus("success");
+    } catch {
+      setStatus("error");
+    }
   }
 
   if (status === "success") {
@@ -105,6 +126,12 @@ export default function ContactForm({
           className="w-full border border-line rounded-md px-3.5 py-2.5 text-[14px] bg-surface"
         />
       </div>
+
+      {status === "error" ? (
+        <p role="alert" className="text-[13.5px] text-copper">
+          {form.error}
+        </p>
+      ) : null}
 
       <button
         type="submit"

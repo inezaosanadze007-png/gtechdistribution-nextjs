@@ -102,7 +102,8 @@
       "messagePlaceholder": "Tell us about your requirements — capacity, quantity, timeline...",
       "submit": "Send request",
       "submitting": "Sending...",
-      "success": "Thanks — your request has been received. We'll respond with pricing and lead time shortly."
+      "success": "Thanks — your request has been received. We'll respond with pricing and lead time shortly.",
+      "error": "Your request could not be sent. Please try again, or email us directly at Gtech.distribution@outlook.com"
     },
     "details": {
       "title": "Other ways to reach us",
