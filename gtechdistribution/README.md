@@ -93,8 +93,9 @@ The page alternates dark and light bands rather than committing to either:
 The palette has **two contexts**, and mixing them breaks legibility:
 
 - **Light** (`bg`, `surface`, `band`, `ink`, `inkSoft`, `line`, `field`,
-  `accent`, `alert`). `accent` is the electric blue at a depth that survives
-  on white.
+  `accent`, `alert`). `accent` is a burnt orange — bright oranges fail
+  contrast on white, so it sits deep enough to clear 4.5:1. `alert` is a true
+  red rather than a red-orange, so it stays distinguishable from `accent`.
 - **Dark** (`deep`, `deepAlt`, `deepInk`, `deepInkSoft`, `deepLine`, `trace`,
   `ember`). `trace` is the image's brighter blue and `ember` its amber; both
   are legible only on a dark ground and must never be used on light.
@@ -107,7 +108,10 @@ Two rules keep the palette legible:
 - **Warmth is rationed.** `ember` marks small accents on dark grounds only,
   and `alert` is reserved for failure states, so a problem never reads as the
   same signal as a call to action.
+- **Note the split.** Light-ground calls to action are orange (`accent`);
+  dark-ground ones are still blue (`trace`). Switching `trace` to `ember`
+  would make every call to action warm.
 
-Every text pair clears WCAG AA against its own ground (worst 5.57:1), and
+Every text pair clears WCAG AA against its own ground (worst 4.54:1), and
 `field` exists so form borders meet the 3:1 required of UI boundaries.
 `deepLine` is a decorative divider and is deliberately below that threshold.

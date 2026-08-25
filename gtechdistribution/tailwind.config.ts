@@ -18,9 +18,10 @@ const config: Config = {
         inkSoft: "#46587A",     // secondary text
         line: "#D2DDEE",        // decorative hairlines
         field: "#7387A6",       // form borders — meets 3:1 as a UI boundary
-        accent: "#1D4ED8",      // electric blue — the signal color on light
-        accentSoft: "#E3EAFD",  // chip and tag ground
-        alert: "#B3341A",       // failure states only
+        accent: "#C2410C",      // burnt orange — the signal color on light
+        accentSoft: "#FDEDE3",  // chip and tag ground, warmed to match
+        alert: "#B01319",       // failure states only — a true red, so it stays
+                                // distinguishable from the orange accent
 
         // Dark context — hero, quality band, closing CTA, footer.
         deep: "#0A1428",        // navy board
