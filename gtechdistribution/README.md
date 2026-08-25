@@ -74,16 +74,27 @@ npm run start
 ## Design system
 
 Colors, fonts, and spacing conventions are defined in `tailwind.config.ts` and
-`src/app/globals.css`. The visual language ("lit board"): the palette is
-sampled from the hero photograph in `public/images/hero-circuit.jpg` — indigo
-substrate (`bg`, `band`, `surface`), cyan trace glow (`accent`), and the violet
-bleed in the image's corner (`violet`), which appears only in the hero scrim.
-Space Grotesk for headlines, IBM Plex Mono for specs and data.
+`src/app/globals.css`. The visual language ("lit board"): the page opens dark
+on the circuit photograph in `public/images/hero-circuit.jpg` and resolves into
+a cool near-white below it. Space Grotesk for headlines, IBM Plex Mono for
+specs and data.
+
+The palette has **two contexts**, and mixing them breaks legibility:
+
+- **Light** (`bg`, `surface`, `band`, `ink`, `inkSoft`, `line`, `accent`) —
+  everything below the hero. `accent` is a deep trace teal.
+- **Dark** (`heroBg`, `heroInk`, `heroInkSoft`, `heroLine`, `trace`, `violet`)
+  — the hero only. `trace` is the image's bright cyan; it reaches only 1.5:1 on
+  white, so it must never be used on a light ground. `violet` echoes the
+  image's corner bleed and appears only in the hero scrim.
 
 Two rules keep the palette legible:
 
-- **`accent` means "act on this."** Cyan fills are reserved for buttons and the
-  active language toggle. Non-interactive emphasis uses `band` with an
-  `accent` hairline, never a cyan fill.
+- **`accent` means "act on this."** Accent fills are reserved for buttons and
+  the active language toggle. Non-interactive emphasis uses `band` with an
+  `accent` hairline, never a filled block.
 - **`alert` is the only warm value** and is reserved for failure states, so a
   problem never reads as the same signal as a call to action.
+
+Every text pair clears WCAG AA against its own ground (worst 5.49:1), and
+`field` exists so form borders meet the 3:1 required of UI boundaries.

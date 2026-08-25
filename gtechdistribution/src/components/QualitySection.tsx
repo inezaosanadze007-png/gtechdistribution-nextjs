@@ -34,11 +34,11 @@ export default function QualitySection({ dict }: { dict: Dictionary }) {
                 className="flex items-center gap-2 border border-line rounded-full px-4 py-2"
               >
                 <svg width="16" height="16" viewBox="0 0 16 16">
-                  <circle cx="8" cy="8" r="7" fill="none" stroke="#29E0F5" strokeWidth="1.4" />
+                  <circle cx="8" cy="8" r="7" fill="none" stroke="#08697F" strokeWidth="1.4" />
                   <path
                     d="M4.5 8.2 L7 10.5 L11.5 5.5"
                     fill="none"
-                    stroke="#29E0F5"
+                    stroke="#08697F"
                     strokeWidth="1.4"
                     strokeLinecap="round"
                     strokeLinejoin="round"

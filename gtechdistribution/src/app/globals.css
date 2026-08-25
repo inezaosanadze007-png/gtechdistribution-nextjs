@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --bg: #060d1e;
-  --surface: #0d1b36;
-  --ink: #e8f1ff;
-  --ink-soft: #93adce;
-  --line: #1b3157;
-  --accent: #29e0f5;
+  --bg: #f5f8fc;
+  --surface: #ffffff;
+  --ink: #0b1626;
+  --ink-soft: #4a5f7a;
+  --line: #d5dfeb;
+  --accent: #08697f;
 }
 
 * {
@@ -22,12 +22,13 @@ body {
 
 ::selection {
   background: var(--accent);
-  color: var(--bg);
+  color: #ffffff;
 }
 
-/* The hero scrim: dense enough on the left for text to sit on the photograph,
-   thinning across the right so the board and its glow stay visible, with the
-   violet corner bleed picked up from the image itself. */
+/* The hero scrim: dense on the left so the headline sits legibly on the
+   photograph, thinning across the right so the board and its glow stay
+   visible, and closing to the page ground at the bottom so the dark hero
+   hands off to the light page below. The violet is the image's own corner. */
 .hero-scrim {
   background:
     radial-gradient(120% 90% at 8% 0%, rgba(139, 92, 246, 0.22) 0%, rgba(139, 92, 246, 0) 55%),
@@ -38,7 +39,7 @@ body {
       rgba(6, 13, 30, 0.55) 58%,
       rgba(6, 13, 30, 0.78) 100%
     ),
-    linear-gradient(to bottom, rgba(6, 13, 30, 0) 60%, rgba(6, 13, 30, 1) 100%);
+    linear-gradient(to bottom, rgba(6, 13, 30, 0) 62%, rgba(6, 13, 30, 0.96) 100%);
 }
 
 .hover-lift {
@@ -46,8 +47,7 @@ body {
 }
 .hover-lift:hover {
   transform: translateY(-4px);
-  /* Dark surfaces swallow drop shadows, so lift reads as glow instead. */
-  box-shadow: 0 0 0 1px rgba(41, 224, 245, 0.25), 0 14px 34px rgba(41, 224, 245, 0.14);
+  box-shadow: 0 12px 28px rgba(11, 22, 38, 0.1);
   border-color: var(--accent) !important;
 }
 
@@ -56,7 +56,7 @@ body {
 }
 .cta-btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 6px 22px rgba(41, 224, 245, 0.3);
+  box-shadow: 0 6px 18px rgba(11, 22, 38, 0.16);
 }
 
 .nav-link {
@@ -76,7 +76,6 @@ body {
   width: 100%;
 }
 
-/* Form controls inherit the dark ground rather than the browser's white. */
 input,
 select,
 textarea {
