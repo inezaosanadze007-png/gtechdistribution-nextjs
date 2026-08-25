@@ -1,17 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
 
-// Quote requests from the contact form are emailed through Resend's REST API.
-// Called with fetch rather than the SDK so the project stays dependency-free.
+// Quote requests from the contact form are delivered through Web3Forms, which
+// forwards them to the inbox that the access key was issued to. Called with
+// fetch rather than an SDK so the project stays dependency-free.
 //
-// Required environment variables:
-//   RESEND_API_KEY       — API key from resend.com
-//   CONTACT_FROM_EMAIL   — sender, on a domain verified in Resend
-//                          (e.g. "GTechDistribution <quotes@gtechdistribution.com>")
-// Optional:
-//   CONTACT_TO_EMAIL     — recipient; defaults to the address below
+// Required environment variable:
+//   WEB3FORMS_ACCESS_KEY — get one at https://web3forms.com by entering
+//                          Gtech.distribution@outlook.com; the key arrives by
+//                          email. The recipient is fixed to that address, so
+//                          there is nothing else to configure.
 
-const RESEND_ENDPOINT = "https://api.resend.com/emails";
-const DEFAULT_RECIPIENT = "Gtech.distribution@outlook.com";
+const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 /** Single-line field: collapse newlines so they can't be smuggled into the subject. */
@@ -27,16 +26,12 @@ function block(value: unknown, maxLength = 5000): string {
 }
 
 export async function POST(request: NextRequest) {
-  const apiKey = process.env.RESEND_API_KEY;
-  const from = process.env.CONTACT_FROM_EMAIL;
-  const to = process.env.CONTACT_TO_EMAIL || DEFAULT_RECIPIENT;
+  const accessKey = process.env.WEB3FORMS_ACCESS_KEY;
 
-  if (!apiKey || !from) {
+  if (!accessKey) {
     // Fail loudly in the server log, quietly to the visitor — a misconfigured
     // deploy must not look like a delivered request.
-    console.error(
-      "Contact form not configured: RESEND_API_KEY and CONTACT_FROM_EMAIL are both required."
-    );
+    console.error("Contact form not configured: WEB3FORMS_ACCESS_KEY is required.");
     return NextResponse.json({ error: "not_configured" }, { status: 500 });
   }
 
@@ -59,42 +54,45 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "invalid_fields" }, { status: 400 });
   }
 
-  const text = [
-    `Name:     ${name}`,
-    `Email:    ${email}`,
-    `Company:  ${company || "—"}`,
-    `Product:  ${productInterest || "—"}`,
-    `Language: ${locale}`,
-    "",
-    "Message:",
-    message || "—",
-  ].join("\n");
-
   try {
-    const response = await fetch(RESEND_ENDPOINT, {
+    const response = await fetch(WEB3FORMS_ENDPOINT, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${apiKey}`,
         "Content-Type": "application/json",
+        Accept: "application/json",
       },
       body: JSON.stringify({
-        from,
-        to: [to],
-        // So a reply from Outlook goes straight back to the person asking.
-        reply_to: email,
+        access_key: accessKey,
         subject: `Quote request — ${name}${company ? ` (${company})` : ""}`,
-        text,
+        from_name: "GTechDistribution website",
+        // So a reply from Outlook goes straight back to the person asking.
+        replyto: email,
+        Name: name,
+        Email: email,
+        Company: company || "—",
+        Product: productInterest || "—",
+        Language: locale,
+        Message: message || "—",
       }),
     });
 
-    if (!response.ok) {
+    // Web3Forms answers 200 with {success: false} for a bad key, so the body
+    // has to be checked too — response.ok alone would let failures through.
+    const result = (await response.json().catch(() => null)) as {
+      success?: boolean;
+      message?: string;
+    } | null;
+
+    if (!response.ok || !result?.success) {
       console.error(
-        `Resend rejected the message (${response.status}): ${await response.text()}`
+        `Web3Forms rejected the message (${response.status}): ${
+          result?.message ?? "no response body"
+        }`
       );
       return NextResponse.json({ error: "send_failed" }, { status: 502 });
     }
   } catch (error) {
-    console.error("Could not reach Resend:", error);
+    console.error("Could not reach Web3Forms:", error);
     return NextResponse.json({ error: "send_failed" }, { status: 502 });
   }
 

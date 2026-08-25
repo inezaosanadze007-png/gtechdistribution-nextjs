@@ -52,12 +52,13 @@ npm run start
 
 ## Content notes / things to finish before launch
 
-- **Contact form needs its environment variables set.** Quote requests are
-  emailed via `src/app/api/contact/route.ts` (Resend REST API). Copy
-  `.env.example` and set `RESEND_API_KEY` and `CONTACT_FROM_EMAIL` in your
-  host's environment — until you do, the form shows an error rather than
-  accepting requests. The sender domain must be verified in Resend; the
-  recipient defaults to `Gtech.distribution@outlook.com`.
+- **Contact form needs its access key set.** Quote requests are delivered via
+  `src/app/api/contact/route.ts` through [Web3Forms](https://web3forms.com).
+  Get a key by entering `Gtech.distribution@outlook.com` on their site (no
+  account is created — the key is emailed to you), then set
+  `WEB3FORMS_ACCESS_KEY` in your host's environment and redeploy. Until you do,
+  the form shows an error rather than accepting requests. Requests arrive at
+  whichever address the key was issued to.
 - **Product photography is still needed.** Product cards currently show
   spec/text only, no images — see `src/components/ProductCard.tsx`. Drop
   finished product photos into `public/images/products/` and reference them
