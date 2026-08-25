@@ -65,7 +65,7 @@ export default function ContactForm({
             id="name"
             name="name"
             required
-            className="w-full border border-line rounded-md px-3.5 py-2.5 text-[14px] bg-surface"
+            className="w-full border border-field rounded-md px-3.5 py-2.5 text-[14px] bg-surface"
           />
         </div>
         <div>
@@ -75,7 +75,7 @@ export default function ContactForm({
           <input
             id="company"
             name="company"
-            className="w-full border border-line rounded-md px-3.5 py-2.5 text-[14px] bg-surface"
+            className="w-full border border-field rounded-md px-3.5 py-2.5 text-[14px] bg-surface"
           />
         </div>
       </div>
@@ -89,7 +89,7 @@ export default function ContactForm({
           name="email"
           type="email"
           required
-          className="w-full border border-line rounded-md px-3.5 py-2.5 text-[14px] bg-surface"
+          className="w-full border border-field rounded-md px-3.5 py-2.5 text-[14px] bg-surface"
         />
       </div>
 
@@ -101,7 +101,7 @@ export default function ContactForm({
           id="productInterest"
           name="productInterest"
           defaultValue=""
-          className="w-full border border-line rounded-md px-3.5 py-2.5 text-[14px] bg-surface"
+          className="w-full border border-field rounded-md px-3.5 py-2.5 text-[14px] bg-surface"
         >
           <option value="" disabled>
             {form.productInterestPlaceholder}
@@ -123,12 +123,12 @@ export default function ContactForm({
           name="message"
           rows={5}
           placeholder={form.messagePlaceholder}
-          className="w-full border border-line rounded-md px-3.5 py-2.5 text-[14px] bg-surface"
+          className="w-full border border-field rounded-md px-3.5 py-2.5 text-[14px] bg-surface"
         />
       </div>
 
       {status === "error" ? (
-        <p role="alert" className="text-[13.5px] text-copper">
+        <p role="alert" className="text-[13.5px] text-alert">
           {form.error}
         </p>
       ) : null}
@@ -136,7 +136,7 @@ export default function ContactForm({
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="cta-btn bg-navy text-white rounded-md px-7 py-3 text-sm font-semibold disabled:opacity-60"
+        className="cta-btn bg-accent text-bg rounded-md px-7 py-3 text-sm font-semibold disabled:opacity-60"
       >
         {status === "submitting" ? form.submitting : form.submit}
       </button>

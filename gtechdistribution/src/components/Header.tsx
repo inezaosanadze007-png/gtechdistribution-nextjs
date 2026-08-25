@@ -17,11 +17,11 @@ export default function Header({ dict, lang }: { dict: Dictionary; lang: Locale 
     <header className="border-b border-line bg-bg/90 backdrop-blur sticky top-0 z-50">
       <div className="max-w-[1180px] mx-auto flex items-center justify-between px-6 py-[18px]">
         <Link href={`/${lang}`} className="flex items-center gap-2.5">
-          <span className="relative block w-[30px] h-[30px] border-2 border-navy">
-            <span className="absolute inset-[6px] bg-copper" />
+          <span className="relative block w-[30px] h-[30px] border-2 border-ink/70">
+            <span className="absolute inset-[6px] bg-accent" />
           </span>
           <span className="font-display font-bold text-[17px] tracking-tight">
-            GTech<span className="text-copper">Distribution</span>
+            GTech<span className="text-accent">Distribution</span>
           </span>
         </Link>
 
@@ -37,7 +37,7 @@ export default function Header({ dict, lang }: { dict: Dictionary; lang: Locale 
           <LanguageSwitcher lang={lang} />
           <Link
             href={`/${lang}/contact`}
-            className="cta-btn bg-navy text-white rounded-md px-4 py-2 text-[13px] font-semibold"
+            className="cta-btn bg-accent text-bg rounded-md px-4 py-2 text-[13px] font-semibold"
           >
             {dict.cta.quote}
           </Link>

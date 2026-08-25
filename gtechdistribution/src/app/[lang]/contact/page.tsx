@@ -21,7 +21,7 @@ export default async function ContactPage({ params }: { params: { lang: Locale }
         </Reveal>
 
         <Reveal delay={0.15}>
-          <div className="border-l-2 border-copper pl-5">
+          <div className="border-l-2 border-accent pl-5">
             <div className="font-display font-semibold text-[15px] mb-3">
               {dict.contactPage.details.title}
             </div>

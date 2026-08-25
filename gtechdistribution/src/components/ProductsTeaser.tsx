@@ -20,14 +20,14 @@ export default function ProductsTeaser({ dict, lang }: { dict: Dictionary; lang:
         ))}
       </div>
       <Reveal delay={0.2}>
-        <div className="mt-6 border-l-2 border-copper pl-3.5 text-[13px] text-inkSoft">
+        <div className="mt-6 border-l-2 border-accent pl-3.5 text-[13px] text-inkSoft">
           {dict.products.ramNote}
         </div>
       </Reveal>
       <Reveal delay={0.25}>
         <Link
           href={`/${lang}/products`}
-          className="inline-block mt-6 font-mono text-[13px] text-navy border-b border-navy"
+          className="inline-block mt-6 font-mono text-[13px] text-accent border-b border-accent"
         >
           {dict.nav.products} →
         </Link>

@@ -10,7 +10,7 @@ export default function IndustriesSection({ dict }: { dict: Dictionary }) {
       <div className="grid sm:grid-cols-2 md:grid-cols-5 gap-4">
         {dict.industries.items.map((it, i) => (
           <Reveal key={i} delay={i * 0.06}>
-            <div className="border-l-2 border-copper pl-3.5 h-full">
+            <div className="border-l-2 border-accent pl-3.5 h-full">
               <div className="font-display font-semibold text-[14.5px] mb-1.5">{it.t}</div>
               <div className="text-[12.5px] text-inkSoft leading-snug">{it.d}</div>
             </div>

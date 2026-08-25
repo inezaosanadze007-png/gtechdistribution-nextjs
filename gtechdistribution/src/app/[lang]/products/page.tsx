@@ -28,7 +28,7 @@ export default async function ProductsPage({ params }: { params: { lang: Locale 
         <div className="overflow-x-auto border border-line rounded-lg mb-20">
           <table className="w-full text-left border-collapse text-[13px] min-w-[720px]">
             <thead>
-              <tr className="bg-navy text-white">
+              <tr className="bg-band text-ink border-b border-accent/50">
                 {[th.model, th.interface, th.controller, th.flash, th.capacity, th.read, th.write, th.temp, th.size].map(
                   (h) => (
                     <th key={h} className="px-4 py-3 font-display font-semibold whitespace-nowrap">
@@ -71,7 +71,7 @@ export default async function ProductsPage({ params }: { params: { lang: Locale 
         <div className="overflow-x-auto border border-line rounded-lg">
           <table className="w-full text-left border-collapse text-[13px] min-w-[640px]">
             <thead>
-              <tr className="bg-navy text-white">
+              <tr className="bg-band text-ink border-b border-accent/50">
                 {[ramTh.model, ramTh.capacity, ramTh.frequency, ramTh.voltage, ramTh.temp, ramTh.size].map((h) => (
                   <th key={h} className="px-4 py-3 font-display font-semibold whitespace-nowrap">
                     {h}

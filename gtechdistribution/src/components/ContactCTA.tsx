@@ -11,7 +11,7 @@ export default function ContactCTA({ dict, lang }: { dict: Dictionary; lang: Loc
           <p className="text-inkSoft text-[15px] mb-7">{dict.contact.sub}</p>
           <Link
             href={`/${lang}/contact`}
-            className="cta-btn inline-block bg-navy text-white rounded-md px-7 py-[13px] text-sm font-semibold"
+            className="cta-btn inline-block bg-accent text-bg rounded-md px-7 py-[13px] text-sm font-semibold"
           >
             {dict.contact.button}
           </Link>

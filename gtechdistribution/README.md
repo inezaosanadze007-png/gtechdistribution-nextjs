@@ -8,8 +8,8 @@ Tailwind CSS.
 
 - **Next.js 14** (App Router)
 - **TypeScript**
-- **Tailwind CSS** — brand tokens (`navy`, `copper`, `ink`, etc.) defined in
-  `tailwind.config.ts`
+- **Tailwind CSS** — brand tokens (`bg`, `band`, `surface`, `ink`, `accent`,
+  etc.) defined in `tailwind.config.ts`
 - **next/font** — Space Grotesk (display), Inter (body), IBM Plex Mono (specs/data)
 
 ## Getting started
@@ -74,6 +74,16 @@ npm run start
 ## Design system
 
 Colors, fonts, and spacing conventions are defined in `tailwind.config.ts` and
-`src/app/globals.css`. The visual language ("datasheet precision"): graphite
-ink on cool white, a copper-trace accent color, Space Grotesk for headlines,
-IBM Plex Mono for specs — deliberately avoiding generic "AI blue."
+`src/app/globals.css`. The visual language ("lit board"): the palette is
+sampled from the hero photograph in `public/images/hero-circuit.jpg` — indigo
+substrate (`bg`, `band`, `surface`), cyan trace glow (`accent`), and the violet
+bleed in the image's corner (`violet`), which appears only in the hero scrim.
+Space Grotesk for headlines, IBM Plex Mono for specs and data.
+
+Two rules keep the palette legible:
+
+- **`accent` means "act on this."** Cyan fills are reserved for buttons and the
+  active language toggle. Non-interactive emphasis uses `band` with an
+  `accent` hairline, never a cyan fill.
+- **`alert` is the only warm value** and is reserved for failure states, so a
+  problem never reads as the same signal as a call to action.
