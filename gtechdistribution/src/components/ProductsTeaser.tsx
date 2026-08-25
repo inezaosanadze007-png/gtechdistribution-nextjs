@@ -8,8 +8,8 @@ export default function ProductsTeaser({ dict, lang }: { dict: Dictionary; lang:
     <section id="products-teaser" className="max-w-[1180px] mx-auto px-6 py-16 scroll-mt-20">
       <Reveal>
         <div className="mb-10 max-w-[560px]">
-          <h2 className="font-display font-bold text-[28px] mb-2.5">{dict.products.title}</h2>
-          <p className="text-inkSoft text-[15px]">{dict.products.sub}</p>
+          <h2 className={`font-display font-bold text-[28px] ${dict.products.sub ? "mb-2.5" : ""}`}>{dict.products.title}</h2>
+          {dict.products.sub ? <p className="text-inkSoft text-[15px]">{dict.products.sub}</p> : null}
         </div>
       </Reveal>
       <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-5">
