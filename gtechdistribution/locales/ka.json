@@ -42,7 +42,7 @@
     "items": [
       { "id": "sata25", "name": "GTD 2.5\" SATA III", "capacity": "32GB – 4TB", "iface": "SATA III · 6Gb/s", "perf": "წაკითხვა 550 MB/s / ჩაწერა 520 MB/s", "tag": "ზოგადი დანიშნულების", "controller": "SMI 2259XT", "flash": "3D TLC NAND", "temp": "0°C – 70°C", "size": "100 × 70 × 7 მმ" },
       { "id": "m2sata", "name": "GTD M.2 SATA III", "capacity": "32GB – 4TB", "iface": "M.2 2280/2242 · SATA III", "perf": "წაკითხვა 550 MB/s / ჩაწერა 520 MB/s", "tag": "თხელი ფორმ-ფაქტორი", "controller": "SMI 2259XT", "flash": "3D TLC NAND", "temp": "0°C – 70°C", "size": "80 × 22 × 2.3 მმ" },
-      { "id": "msata", "name": "GTD mSATA SSD", "capacity": "32GB – 4TB", "iface": "mSATA · SATA III", "perf": "წაკითხვა 550 MB/s / ჩაწერა 520 MB/s", "tag": "ჩაშენებული / ძველი სისტემები", "controller": "SMI კონტროლერი", "flash": "3D TLC NAND", "temp": "0°C – 70°C", "size": "50 × 30 × 3.5 მმ" },
+      { "id": "msata", "name": "GTD mSATA SSD", "capacity": "32GB – 4TB", "iface": "mSATA · SATA III", "perf": "წაკითხვა 550 MB/s / ჩაწერა 520 MB/s", "tag": "ჩაშენებული/გამოცდილი სისტემები", "controller": "SMI კონტროლერი", "flash": "3D TLC NAND", "temp": "0°C – 70°C", "size": "50 × 30 × 3.5 მმ" },
       { "id": "nvme", "name": "GTD M.2 NVMe PCIe", "capacity": "128GB – 4TB", "iface": "M.2 2280 · PCIe Gen4 x4", "perf": "წაკითხვა 7400 MB/s-მდე / ჩაწერა 6500 MB/s-მდე", "tag": "მაღალი წარმადობის", "controller": "NVMe SSD კონტროლერი", "flash": "3D TLC NAND", "temp": "0°C – 70°C", "size": "80 × 22 × 2.3 მმ" }
     ],
     "spec": "სპეც. ფურცელი",
