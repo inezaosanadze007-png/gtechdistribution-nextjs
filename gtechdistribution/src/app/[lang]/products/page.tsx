@@ -19,7 +19,7 @@ export default async function ProductsPage({ params }: { params: { lang: Locale 
       <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-5 mb-14">
         {dict.products.items.map((p, i) => (
           <Reveal key={p.id} delay={i * 0.08}>
-            <ProductCard product={p} specLabel={dict.products.spec} quoteLabel={dict.products.quote} />
+            <ProductCard product={p} quoteLabel={dict.products.quote} />
           </Reveal>
         ))}
       </div>

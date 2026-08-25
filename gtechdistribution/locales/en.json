@@ -45,7 +45,6 @@
       { "id": "msata", "name": "GTD mSATA SSD", "capacity": "32GB – 4TB", "iface": "mSATA · SATA III", "perf": "550 MB/s read / 520 MB/s write", "tag": "Embedded / legacy systems", "controller": "SMI controller", "flash": "3D TLC NAND", "temp": "0°C – 70°C", "size": "50 × 30 × 3.5 mm" },
       { "id": "nvme", "name": "GTD M.2 NVMe PCIe", "capacity": "128GB – 4TB", "iface": "M.2 2280 · PCIe Gen4 x4", "perf": "up to 7400 MB/s read / 6500 MB/s write", "tag": "High performance", "controller": "NVMe SSD controller", "flash": "3D TLC NAND", "temp": "0°C – 70°C", "size": "80 × 22 × 2.3 mm" }
     ],
-    "spec": "Spec sheet",
     "quote": "Request quote",
     "ramNote": "Also sourcing: DDR3 / DDR4 / DDR5 U-DIMM and SO-DIMM memory — 2GB–32GB, 1333–6000MHz."
   },
@@ -118,7 +117,7 @@
   },
   "productsPage": {
     "title": "Product catalog",
-    "sub": "Full specifications for our current SSD line and memory modules. Datasheet downloads coming soon.",
+    "sub": "Full specifications for our current SSD line and memory modules.",
     "tableHeaders": {
       "model": "Product model",
       "interface": "Interface",

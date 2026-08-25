@@ -4,11 +4,9 @@ type Product = Dictionary["products"]["items"][number];
 
 export default function ProductCard({
   product,
-  specLabel,
   quoteLabel,
 }: {
   product: Product;
-  specLabel: string;
   quoteLabel: string;
 }) {
   return (
@@ -25,11 +23,8 @@ export default function ProductCard({
         <div className="font-mono text-[12.5px] mb-3">{product.capacity}</div>
         <div className="text-[11px] text-inkSoft mb-0.5">Performance</div>
         <div className="font-mono text-[12.5px] mb-4 leading-snug">{product.perf}</div>
-        <div className="flex gap-1.5 mt-auto">
-          <button className="flex-1 bg-transparent border border-line rounded-md py-2 text-[11.5px]">
-            {specLabel}
-          </button>
-          <button className="cta-btn flex-1 bg-navy text-white rounded-md py-2 text-[11.5px] font-semibold">
+        <div className="mt-auto">
+          <button className="cta-btn w-full bg-navy text-white rounded-md py-2 text-[11.5px] font-semibold">
             {quoteLabel}
           </button>
         </div>
