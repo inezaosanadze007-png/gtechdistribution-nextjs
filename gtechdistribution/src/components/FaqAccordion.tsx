@@ -18,7 +18,7 @@ export default function FaqAccordion({ items }: { items: Dictionary["faq"]["item
             >
               <span className="font-display font-semibold text-[15.5px]">{item.q}</span>
               <span
-                className="font-mono text-accent text-lg leading-none shrink-0 transition-transform"
+                className="font-mono text-accentText text-lg leading-none shrink-0 transition-transform"
                 style={{ transform: isOpen ? "rotate(45deg)" : "rotate(0deg)" }}
               >
                 +

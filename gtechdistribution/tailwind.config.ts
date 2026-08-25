@@ -18,8 +18,10 @@ const config: Config = {
         inkSoft: "#46587A",     // secondary text
         line: "#D2DDEE",        // decorative hairlines
         field: "#7387A6",       // form borders — meets 3:1 as a UI boundary
-        accent: "#C2410C",      // burnt orange — the signal color on light
-        accentSoft: "#FDEDE3",  // chip and tag ground, warmed to match
+        accent: "#C9862E",      // the brand copper — fills, the logo mark, rules
+        accentText: "#8F5D16",  // same hue darkened for small text; the copper
+                                // itself is only 3.03:1 on white
+        accentSoft: "#F7EBDA",  // chip and tag ground
         alert: "#B01319",       // failure states only — a true red, so it stays
                                 // distinguishable from the orange accent
 

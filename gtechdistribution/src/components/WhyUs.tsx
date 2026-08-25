@@ -15,7 +15,7 @@ export default function WhyUs({ dict }: { dict: Dictionary }) {
           {dict.why.items.map((it, i) => (
             <Reveal key={i} delay={i * 0.08}>
               <div className="hover-lift border border-line rounded-lg px-[18px] py-[22px] h-full">
-                <div className="font-mono text-[11px] text-accent mb-3.5">{it.n}</div>
+                <div className="font-mono text-[11px] text-accentText mb-3.5">{it.n}</div>
                 <div className="font-display font-semibold text-[15px] mb-2">{it.t}</div>
                 <div className="text-[13.5px] text-inkSoft leading-relaxed">{it.d}</div>
               </div>

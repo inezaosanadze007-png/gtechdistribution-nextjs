@@ -21,7 +21,7 @@ export default function LanguageSwitcher({ lang }: { lang: Locale }) {
           key={l}
           onClick={() => switchTo(l)}
           className={`px-2.5 py-1.5 ${
-            lang === l ? "bg-accent text-bg" : "text-inkSoft"
+            lang === l ? "bg-accent text-ink" : "text-inkSoft"
           }`}
         >
           {l.toUpperCase()}

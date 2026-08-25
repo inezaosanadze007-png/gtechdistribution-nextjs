@@ -27,7 +27,7 @@ export default function ProductsTeaser({ dict, lang }: { dict: Dictionary; lang:
       <Reveal delay={0.25}>
         <Link
           href={`/${lang}/products`}
-          className="inline-block mt-6 font-mono text-[13px] text-accent border-b border-accent"
+          className="inline-block mt-6 font-mono text-[13px] text-accentText border-b border-accentText"
         >
           {dict.nav.products} →
         </Link>

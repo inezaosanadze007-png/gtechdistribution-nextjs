@@ -21,7 +21,7 @@ export default function Header({ dict, lang }: { dict: Dictionary; lang: Locale 
             <span className="absolute inset-[6px] bg-accent" />
           </span>
           <span className="font-display font-bold text-[17px] tracking-tight">
-            GTech<span className="text-accent">Distribution</span>
+            GTech<span className="text-accentText">Distribution</span>
           </span>
         </Link>
 
@@ -37,7 +37,7 @@ export default function Header({ dict, lang }: { dict: Dictionary; lang: Locale 
           <LanguageSwitcher lang={lang} />
           <Link
             href={`/${lang}/contact`}
-            className="cta-btn bg-accent text-bg rounded-md px-4 py-2 text-[13px] font-semibold"
+            className="cta-btn bg-accent text-ink rounded-md px-4 py-2 text-[13px] font-semibold"
           >
             {dict.cta.quote}
           </Link>

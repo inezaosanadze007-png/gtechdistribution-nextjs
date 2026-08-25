@@ -93,9 +93,11 @@ The page alternates dark and light bands rather than committing to either:
 The palette has **two contexts**, and mixing them breaks legibility:
 
 - **Light** (`bg`, `surface`, `band`, `ink`, `inkSoft`, `line`, `field`,
-  `accent`, `alert`). `accent` is a burnt orange — bright oranges fail
-  contrast on white, so it sits deep enough to clear 4.5:1. `alert` is a true
-  red rather than a red-orange, so it stays distinguishable from `accent`.
+  `accent`, `accentText`, `accentSoft`, `alert`). `accent` is the brand
+  copper `#C9862E` and is a **fill only** — the logo mark, buttons, rules. At
+  3.03:1 on white it cannot carry text, so small copper text uses
+  `accentText`, the same hue darkened. Copper fills take an `ink` label, never
+  a white one. `alert` is a true red so it stays distinct from the copper.
 - **Dark** (`deep`, `deepAlt`, `deepInk`, `deepInkSoft`, `deepLine`, `trace`,
   `ember`). `trace` is the image's brighter blue and `ember` its amber; both
   are legible only on a dark ground and must never be used on light.
@@ -112,6 +114,6 @@ Two rules keep the palette legible:
   dark-ground ones are still blue (`trace`). Switching `trace` to `ember`
   would make every call to action warm.
 
-Every text pair clears WCAG AA against its own ground (worst 4.54:1), and
+Every text pair clears WCAG AA against its own ground (worst 4.77:1), and
 `field` exists so form borders meet the 3:1 required of UI boundaries.
 `deepLine` is a decorative divider and is deliberately below that threshold.

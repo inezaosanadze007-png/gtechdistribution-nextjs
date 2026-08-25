@@ -136,7 +136,7 @@ export default function ContactForm({
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="cta-btn bg-accent text-bg rounded-md px-7 py-3 text-sm font-semibold disabled:opacity-60"
+        className="cta-btn bg-accent text-ink rounded-md px-7 py-3 text-sm font-semibold disabled:opacity-60"
       >
         {status === "submitting" ? form.submitting : form.submit}
       </button>
