@@ -15,7 +15,7 @@ export default function ProductsTeaser({ dict, lang }: { dict: Dictionary; lang:
       <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-5">
         {dict.products.items.map((p, i) => (
           <Reveal key={p.id} delay={i * 0.1}>
-            <ProductCard product={p} quoteLabel={dict.products.quote} />
+            <ProductCard product={p} quoteLabel={dict.products.quote} lang={lang} />
           </Reveal>
         ))}
       </div>

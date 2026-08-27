@@ -1,13 +1,16 @@
-import { Dictionary } from "@/lib/dictionaries";
+import Link from "next/link";
+import { Dictionary, Locale } from "@/lib/dictionaries";
 
 type Product = Dictionary["products"]["items"][number];
 
 export default function ProductCard({
   product,
   quoteLabel,
+  lang,
 }: {
   product: Product;
   quoteLabel: string;
+  lang: Locale;
 }) {
   return (
     <div className="hover-lift border border-line rounded-lg bg-surface overflow-hidden h-full flex flex-col">
@@ -24,9 +27,14 @@ export default function ProductCard({
         <div className="text-[11px] text-inkSoft mb-0.5">Performance</div>
         <div className="font-mono text-[12.5px] mb-4 leading-snug">{product.perf}</div>
         <div className="mt-auto">
-          <button className="cta-btn w-full bg-accent text-ink rounded-md py-2 text-[11.5px] font-semibold">
+          {/* The quote request opens the contact form with this product already
+              chosen, so the visitor never re-picks what they just clicked. */}
+          <Link
+            href={`/${lang}/contact?product=${product.id}`}
+            className="cta-btn block w-full text-center bg-accent text-ink rounded-md py-2 text-[11.5px] font-semibold"
+          >
             {quoteLabel}
-          </button>
+          </Link>
         </div>
       </div>
     </div>

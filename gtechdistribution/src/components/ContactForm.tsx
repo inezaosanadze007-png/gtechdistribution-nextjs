@@ -8,10 +8,12 @@ type Status = "idle" | "submitting" | "success" | "error";
 export default function ContactForm({
   form,
   productOptions,
+  initialProduct = "",
   lang,
 }: {
   form: Dictionary["contactPage"]["form"];
   productOptions: { id: string; name: string }[];
+  initialProduct?: string;
   lang: Locale;
 }) {
   const [status, setStatus] = useState<Status>("idle");
@@ -100,7 +102,7 @@ export default function ContactForm({
         <select
           id="productInterest"
           name="productInterest"
-          defaultValue=""
+          defaultValue={initialProduct}
           className="w-full border border-field rounded-md px-3.5 py-2.5 text-[14px] bg-surface"
         >
           <option value="" disabled>

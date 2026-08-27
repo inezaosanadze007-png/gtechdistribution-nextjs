@@ -2,9 +2,20 @@ import { getDictionary, Locale } from "@/lib/dictionaries";
 import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
 
-export default async function ContactPage({ params }: { params: { lang: Locale } }) {
+export default async function ContactPage({
+  params,
+  searchParams,
+}: {
+  params: { lang: Locale };
+  searchParams?: { product?: string };
+}) {
   const dict = await getDictionary(params.lang);
   const productOptions = dict.products.items.map((p) => ({ id: p.id, name: p.name }));
+
+  // ?product= comes from the quote buttons on the product cards. Ignore an id
+  // that no longer matches a product so the form falls back to the placeholder.
+  const requested = searchParams?.product ?? "";
+  const initialProduct = productOptions.some((p) => p.id === requested) ? requested : "";
 
   return (
     <div className="max-w-[1000px] mx-auto px-6 py-16">
@@ -17,7 +28,12 @@ export default async function ContactPage({ params }: { params: { lang: Locale }
 
       <div className="grid md:grid-cols-[1.4fr_1fr] gap-12">
         <Reveal delay={0.1}>
-          <ContactForm form={dict.contactPage.form} productOptions={productOptions} lang={params.lang} />
+          <ContactForm
+            form={dict.contactPage.form}
+            productOptions={productOptions}
+            initialProduct={initialProduct}
+            lang={params.lang}
+          />
         </Reveal>
 
         <Reveal delay={0.15}>
