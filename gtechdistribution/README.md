@@ -52,13 +52,20 @@ npm run start
 
 ## Content notes / things to finish before launch
 
-- **Contact form needs its access key set.** Quote requests are delivered via
-  `src/app/api/contact/route.ts` through [Web3Forms](https://web3forms.com).
+- **Contact form needs its access key set.** Quote requests are delivered from
+  `src/components/ContactForm.tsx` through [Web3Forms](https://web3forms.com).
   Get a key by entering `Gtech.distribution@outlook.com` on their site (no
   account is created — the key is emailed to you), then set
-  `WEB3FORMS_ACCESS_KEY` in your host's environment and redeploy. Until you do,
-  the form shows an error rather than accepting requests. Requests arrive at
-  whichever address the key was issued to.
+  `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` in your host's environment and redeploy.
+  Until you do, the form shows an error rather than accepting requests.
+  Requests arrive at whichever address the key was issued to.
+
+  The submission is made from the browser, not from a server route, because
+  Web3Forms answers server-to-server calls with `403 "Use our API in client
+  side"` on the free plan. That is also why the variable is `NEXT_PUBLIC_`:
+  the key is public by design and only permits sending mail to that inbox.
+  The free plan allows 250 submissions a month; a hidden `botcheck` honeypot
+  field in the form keeps bot spam from eating into it.
 - **Product photography is still needed.** Product cards currently show
   spec/text only, no images — see `src/components/ProductCard.tsx`. Drop
   finished product photos into `public/images/products/` and reference them
