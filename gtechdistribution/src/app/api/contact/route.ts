@@ -82,6 +82,19 @@ export async function POST(request: NextRequest) {
   // sender learns nothing, but send no mail.
   if (body.botcheck) return NextResponse.json({ ok: true });
 
+  // Temporary diagnostic: echo back exactly what the server parsed off the
+  // wire, so a mangled character can be traced to the hop that mangled it.
+  // Remove with the GET handler once delivery is confirmed.
+  if (body.debug === true) {
+    const sample = line(body.name, 120);
+    return NextResponse.json({
+      received: sample,
+      codePoints: Array.from(sample).slice(0, 12).map((c) => c.codePointAt(0)),
+      messageReceived: block(body.message).slice(0, 40),
+      byteLength: new TextEncoder().encode(sample).length,
+    });
+  }
+
   const name = line(body.name, 120);
   const email = line(body.email, 200);
   const company = line(body.company, 120);
