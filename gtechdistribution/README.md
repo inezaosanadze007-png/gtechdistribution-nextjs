@@ -53,23 +53,32 @@ npm run start
 ## Content notes / things to finish before launch
 
 - **Contact form needs its API key set.** Quote requests are emailed from
-  `src/app/api/contact/route.ts` using [Resend](https://resend.com). Create an
-  account, add the domain `mygeotech.online` and the DNS records Resend gives
-  you (DNS for this domain is managed at Wix), then create an API key and set
-  `RESEND_API_KEY` in your host's environment and redeploy. Until you do, the
-  form shows an error rather than accepting requests.
+  `src/app/api/contact/route.ts` using [Brevo](https://brevo.com). Create an
+  account, add the domain `mygeotech.online` and the TXT/CNAME records Brevo
+  gives you (DNS for this domain is managed at Wix), then create an API key,
+  set `BREVO_API_KEY` in your host's environment and redeploy. Until you do,
+  the form shows an error rather than accepting requests.
 
-  Resend requires a verified domain, so mail is sent from the site's own domain
-  (`quotes@mygeotech.online` by default — override with `QUOTE_FROM_EMAIL`) to
+  Mail is sent from the site's own domain (`quotes@mygeotech.online` by
+  default — override with `QUOTE_FROM_EMAIL`) to
   `Gtech.distribution@outlook.com` (override with `QUOTE_TO_EMAIL`). The
-  visitor's address is set as `reply_to`, so replying from Outlook goes
-  straight back to them.
+  visitor's address is set as `replyTo`, so replying from Outlook goes straight
+  back to them.
 
-  An earlier version used Web3Forms, a browser-side form relay. It was dropped
-  because it mangles non-ASCII text: Georgian submissions arrived as `???`,
-  which is fatal for a Georgian-language site. Any replacement must be tested
-  with Georgian input before it is trusted. A hidden `botcheck` honeypot field
-  in the form is dropped server-side, keeping bot spam out of the inbox.
+  Two constraints shaped this choice, and both bite any future replacement:
+
+  1. **Unicode.** An earlier version used Web3Forms, a browser-side form relay.
+     It was dropped because it mangles non-ASCII text: Georgian submissions
+     arrived as `???`. Test any replacement with Georgian input before
+     trusting it.
+  2. **DNS at Wix.** Wix cannot publish MX records for subdomains and does not
+     allow nameserver changes for domains registered with it. That rules out
+     providers needing an MX record on a sending subdomain — Resend among
+     them — unless the domain is first transferred away from Wix. Brevo
+     authenticates with TXT/CNAME records only, which Wix can do.
+
+  A hidden `botcheck` honeypot field in the form is dropped server-side,
+  keeping bot spam out of the inbox.
 - **Product photography is still needed.** Product cards currently show
   spec/text only, no images — see `src/components/ProductCard.tsx`. Drop
   finished product photos into `public/images/products/` and reference them

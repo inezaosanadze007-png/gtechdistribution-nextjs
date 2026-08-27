@@ -1,24 +1,27 @@
 import { NextRequest, NextResponse } from "next/server";
 
-// Quote requests are delivered by email through Resend. Called with fetch
-// rather than an SDK so the project stays dependency-free.
+// Quote requests are delivered by email through Brevo. Called with fetch rather
+// than an SDK so the project stays dependency-free.
 //
-// This runs server-side on purpose: the API key is a real secret, unlike the
-// public key of the form-relay service used previously. That service was
-// dropped because it mangled non-ASCII — Georgian arrived as "???" — which is
-// fatal for a site whose primary language is Georgian.
+// Why Brevo and not one of the alternatives:
+//   - Web3Forms mangled non-ASCII — Georgian arrived as "???" — which is fatal
+//     for a site whose primary language is Georgian.
+//   - Resend needs an MX record on a sending subdomain, and this domain's DNS
+//     is at Wix, which cannot publish MX records for subdomains at all.
+//     Brevo authenticates with TXT/CNAME records only, which Wix can do.
 //
 // Required environment variable:
-//   RESEND_API_KEY — from https://resend.com (Settings -> API Keys).
+//   BREVO_API_KEY — from https://brevo.com (SMTP & API -> API Keys).
 // Optional overrides:
-//   QUOTE_FROM_EMAIL — sender; must be on a domain verified in Resend.
+//   QUOTE_FROM_EMAIL — sender; must be on a domain authenticated in Brevo.
 //   QUOTE_TO_EMAIL   — where quote requests land.
 
-const RESEND_ENDPOINT = "https://api.resend.com/emails";
+const BREVO_ENDPOINT = "https://api.brevo.com/v3/smtp/email";
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-const FROM = process.env.QUOTE_FROM_EMAIL || "GTechDistribution <quotes@mygeotech.online>";
-const TO = process.env.QUOTE_TO_EMAIL || "Gtech.distribution@outlook.com";
+const FROM_EMAIL = process.env.QUOTE_FROM_EMAIL || "quotes@mygeotech.online";
+const FROM_NAME = "GTechDistribution";
+const TO_EMAIL = process.env.QUOTE_TO_EMAIL || "Gtech.distribution@outlook.com";
 
 /** Single-line field: collapse newlines so they can't be smuggled into the subject. */
 function line(value: unknown, maxLength = 200): string {
@@ -42,12 +45,12 @@ function escapeHtml(value: string): string {
 }
 
 export async function POST(request: NextRequest) {
-  const apiKey = process.env.RESEND_API_KEY;
+  const apiKey = process.env.BREVO_API_KEY;
 
   if (!apiKey) {
     // Fail loudly in the server log, quietly to the visitor — a misconfigured
     // deploy must not look like a delivered request.
-    console.error("Contact form not configured: RESEND_API_KEY is required.");
+    console.error("Contact form not configured: BREVO_API_KEY is required.");
     return NextResponse.json({ error: "not_configured" }, { status: 500 });
   }
 
@@ -83,7 +86,7 @@ export async function POST(request: NextRequest) {
     ["Language", locale],
   ];
 
-  const html = `<!doctype html>
+  const htmlContent = `<!doctype html>
 <html><head><meta charset="utf-8"></head>
 <body style="font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#0a1526;">
   <h2 style="margin:0 0 16px;font-size:18px;">Quote request from the website</h2>
@@ -102,33 +105,34 @@ export async function POST(request: NextRequest) {
   )}</div>
 </body></html>`;
 
-  const text = [...rows.map(([label, value]) => `${label}: ${value}`), "", message || "—"].join("\n");
+  const textContent = [...rows.map(([label, value]) => `${label}: ${value}`), "", message || "—"].join("\n");
 
   try {
-    const response = await fetch(RESEND_ENDPOINT, {
+    const response = await fetch(BREVO_ENDPOINT, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${apiKey}`,
+        "api-key": apiKey,
         "Content-Type": "application/json",
+        accept: "application/json",
       },
       body: JSON.stringify({
-        from: FROM,
-        to: TO,
-        subject: `Quote request — ${name}${company ? ` (${company})` : ""}`,
+        sender: { name: FROM_NAME, email: FROM_EMAIL },
+        to: [{ email: TO_EMAIL }],
         // So a reply from Outlook goes straight back to the person asking.
-        reply_to: email,
-        html,
-        text,
+        replyTo: { email, name },
+        subject: `Quote request — ${name}${company ? ` (${company})` : ""}`,
+        htmlContent,
+        textContent,
       }),
     });
 
     if (!response.ok) {
       const detail = await response.text().catch(() => "");
-      console.error(`Resend rejected the message (${response.status}): ${detail || "no response body"}`);
+      console.error(`Brevo rejected the message (${response.status}): ${detail || "no response body"}`);
       return NextResponse.json({ error: "send_failed" }, { status: 502 });
     }
   } catch (error) {
-    console.error("Could not reach Resend:", error);
+    console.error("Could not reach Brevo:", error);
     return NextResponse.json({ error: "send_failed" }, { status: 502 });
   }
 
