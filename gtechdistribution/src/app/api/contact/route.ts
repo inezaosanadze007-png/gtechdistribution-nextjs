@@ -44,6 +44,21 @@ function escapeHtml(value: string): string {
     .replace(/"/g, "&quot;");
 }
 
+// Temporary diagnostic: reports which build is live and whether the API key is
+// visible to it, without ever revealing the key. Remove once delivery is
+// confirmed working.
+export async function GET() {
+  return NextResponse.json({
+    provider: "brevo",
+    keyPresent: Boolean(process.env.BREVO_API_KEY),
+    keyLength: process.env.BREVO_API_KEY?.length ?? 0,
+    fromEmail: FROM_EMAIL,
+    toEmail: TO_EMAIL,
+    commit: process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7) ?? "unknown",
+    env: process.env.VERCEL_ENV ?? "unknown",
+  });
+}
+
 export async function POST(request: NextRequest) {
   const apiKey = process.env.BREVO_API_KEY;
 
