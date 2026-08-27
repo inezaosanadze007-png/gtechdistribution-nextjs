@@ -52,20 +52,24 @@ npm run start
 
 ## Content notes / things to finish before launch
 
-- **Contact form needs its access key set.** Quote requests are delivered from
-  `src/components/ContactForm.tsx` through [Web3Forms](https://web3forms.com).
-  Get a key by entering `Gtech.distribution@outlook.com` on their site (no
-  account is created — the key is emailed to you), then set
-  `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` in your host's environment and redeploy.
-  Until you do, the form shows an error rather than accepting requests.
-  Requests arrive at whichever address the key was issued to.
+- **Contact form needs its API key set.** Quote requests are emailed from
+  `src/app/api/contact/route.ts` using [Resend](https://resend.com). Create an
+  account, add the domain `mygeotech.online` and the DNS records Resend gives
+  you (DNS for this domain is managed at Wix), then create an API key and set
+  `RESEND_API_KEY` in your host's environment and redeploy. Until you do, the
+  form shows an error rather than accepting requests.
 
-  The submission is made from the browser, not from a server route, because
-  Web3Forms answers server-to-server calls with `403 "Use our API in client
-  side"` on the free plan. That is also why the variable is `NEXT_PUBLIC_`:
-  the key is public by design and only permits sending mail to that inbox.
-  The free plan allows 250 submissions a month; a hidden `botcheck` honeypot
-  field in the form keeps bot spam from eating into it.
+  Resend requires a verified domain, so mail is sent from the site's own domain
+  (`quotes@mygeotech.online` by default — override with `QUOTE_FROM_EMAIL`) to
+  `Gtech.distribution@outlook.com` (override with `QUOTE_TO_EMAIL`). The
+  visitor's address is set as `reply_to`, so replying from Outlook goes
+  straight back to them.
+
+  An earlier version used Web3Forms, a browser-side form relay. It was dropped
+  because it mangles non-ASCII text: Georgian submissions arrived as `???`,
+  which is fatal for a Georgian-language site. Any replacement must be tested
+  with Georgian input before it is trusted. A hidden `botcheck` honeypot field
+  in the form is dropped server-side, keeping bot spam out of the inbox.
 - **Product photography is still needed.** Product cards currently show
   spec/text only, no images — see `src/components/ProductCard.tsx`. Drop
   finished product photos into `public/images/products/` and reference them
